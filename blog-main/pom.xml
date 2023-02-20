@@ -21,7 +21,7 @@
         <freemarker-freemarker-version>2.3.31</freemarker-freemarker-version>
         <lombok-version>1.18.24</lombok-version>
         <jackson-version>2.13.3</jackson-version>
-
+        <druid-version>1.2.15</druid-version>
     </properties>
     <dependencies>
 
@@ -92,6 +92,13 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!--druid-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid-version}</version>
         </dependency>
         <!-- Redis-->
         <dependency>

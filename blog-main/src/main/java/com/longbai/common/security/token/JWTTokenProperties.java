@@ -4,13 +4,13 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
+
 /**
- * <h3>ProcessMiniProgram</h3>
- * <p>JWT参数</p>
- *
- * @author : chenjunjie
- * @date : 2021-11-11 18:30
- **/
+ * @Author Cien
+ * @Date 2023/2/20 16:02
+ * @Version 1.0
+ * @Note JWT参数
+ */
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "lili.jwt-setting")

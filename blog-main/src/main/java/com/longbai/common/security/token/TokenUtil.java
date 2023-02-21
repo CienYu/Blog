@@ -1,7 +1,6 @@
 package com.longbai.common.security.token;
 
 
-import cn.hutool.json.JSONUtil;
 
 import com.google.gson.Gson;
 import com.longbai.common.cache.Cache;
@@ -19,12 +18,12 @@ import javax.annotation.Resource;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+
 /**
- * TokenUtil
- *
- * @author Chopper
- * @version v1.0
- * 2020-11-12 18:44
+ * @Author Cien
+ * @Date 2023/2/20 16:02
+ * @Version 1.0
+ * @Note TokenUtil
  */
 @Component
 @Slf4j

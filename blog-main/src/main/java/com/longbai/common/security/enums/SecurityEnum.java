@@ -1,12 +1,12 @@
 package com.longbai.common.security.enums;
 
+
 /**
- * <h3>ProcessMiniProgram</h3>
- * <p>安全相关常量</p>
- *
- * @author : chenjunjie
- * @date : 2021-11-11 15:58
- **/
+ * @Author Cien
+ * @Date 2023/2/20 16:02
+ * @Version 1.0
+ * @Note 安全相关常量
+ */
 public enum SecurityEnum {
     /**
      * 存在与header中的token参数头 名

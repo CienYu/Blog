@@ -18,11 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-/**
- * 全局异常异常处理
- *
- * @author Chopper
- */
+
 @RestControllerAdvice
 @Slf4j
 public class GlobalControllerExceptionHandler {

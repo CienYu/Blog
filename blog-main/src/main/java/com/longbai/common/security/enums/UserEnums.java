@@ -6,16 +6,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
 /**
- * <h3>ProcessMiniProgram</h3>
- * <p>角色枚举类</p>
- *
- * @author : chenjunjie
- * @date : 2021-11-11 16:01
- **/
+ * @Author Cien
+ * @Date 2023/2/20 16:02
+ * @Version 1.0
+ * @Note 角色枚举类
+ */
 public enum UserEnums {
 
 
+    //todo 待修改
     CONSIGNOR("委托商"),
     PROCESSORS("加工户"),
     EMPLOYEE("普通员工");

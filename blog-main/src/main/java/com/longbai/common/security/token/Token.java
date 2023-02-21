@@ -2,12 +2,12 @@ package com.longbai.common.security.token;
 
 import lombok.Data;
 
+
 /**
- * Token 实体类
- *
- * @author Chopper
- * @version v1.0
- * 2020-11-13 10:02
+ * @Author Cien
+ * @Date 2023/2/20 16:02
+ * @Version 1.0
+ * @Note 实体类
  */
 @Data
 public class Token {

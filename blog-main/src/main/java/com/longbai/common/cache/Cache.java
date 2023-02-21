@@ -9,13 +9,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-/**
- * <h3>ProcessMiniProgram</h3>
- * <p>缓存接口</p>
- *
- * @author : chenjunjie
- * @date : 2021-11-11 15:19
- **/
 public interface Cache<T> {
     /**
      * Get an item from the cache, nontransactionally

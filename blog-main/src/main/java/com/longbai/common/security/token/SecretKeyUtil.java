@@ -7,13 +7,13 @@ import org.apache.tomcat.util.codec.binary.Base64;
 
 import javax.crypto.SecretKey;
 
+
 /**
- * <h3>ProcessMiniProgram</h3>
- * <p>验证签名</p>
- *
- * @author : chenjunjie
- * @date : 2021-11-11 16:13
- **/
+ * @Author Cien
+ * @Date 2023/2/20 16:02
+ * @Version 1.0
+ * @Note 验证签名
+ */
 public class SecretKeyUtil {
     public static SecretKey generalKey() {
         //自定义

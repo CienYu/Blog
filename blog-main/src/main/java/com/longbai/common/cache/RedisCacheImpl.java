@@ -14,13 +14,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
-/**
- * <h3>ProcessMiniProgram</h3>
- * <p>redis 缓存实现</p>
- *
- * @author : chenjunjie
- * @date : 2021-11-11 15:20
- **/
+
 @Slf4j
 @Component
 public class RedisCacheImpl implements Cache{

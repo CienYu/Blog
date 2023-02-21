@@ -3,12 +3,7 @@ package com.longbai.common.cache;
 
 import com.longbai.common.security.enums.UserEnums;
 
-/**
- * <h3>ProcessMiniProgram</h3>
- * <p>缓存前缀</p>
- *
- * @author : chenjunjie
- **/
+
 public enum CachePrefix {
     /**
      * 微信会话信息

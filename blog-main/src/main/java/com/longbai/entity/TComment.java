@@ -1,40 +1,49 @@
 package com.longbai.entity;
-
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.time.LocalDateTime;
-import java.io.Serializable;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author Cien
- * @since 2023-02-20
- */
+
+import java.io.Serializable;
+import java.util.Date;
+import java.lang.String;
+import java.lang.Integer;
+
 @Data
-@EqualsAndHashCode(callSuper = false)
+@ApiModel(description = "TComment",value = "TComment")
 @TableName("t_comment")
-public class TComment implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class TComment implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+	@ApiModelProperty(value = "评论id",required = false)
+	@TableId(value = "comment_id", type = IdType.AUTO)
+	private Integer commentId;
 
-    private Integer commentId;
+	@ApiModelProperty(value = "评论内容",required = false)
+    @TableField("comment_content")
+	private String commentContent;
 
-    private String commentContent;
+	@ApiModelProperty(value = "博文id",required = false)
+    @TableField("blog_id")
+	private Integer blogId;
 
-    private Integer blogId;
+	@ApiModelProperty(value = "创建时间",required = false)
+    @TableField("create_time")
+	private Date createTime;
 
-    private LocalDateTime createTime;
+	@ApiModelProperty(value = "用户id",required = false)
+    @TableField("user_id")
+	private Integer userId;
 
-    private Integer userid;
+	@ApiModelProperty(value = "回复人id",required = false)
+    @TableField("reply_id")
+	private Integer replyId;
 
-    /**
-     * 回复人id
-     */
-    private Integer replyid;
 
 
 }

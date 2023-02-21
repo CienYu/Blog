@@ -1,7 +1,9 @@
 package com.longbai.common.utils;
 
-import com.longbai.common.enums.ResultCode;
+
+import com.longbai.common.security.enums.ResultCode;
 import com.longbai.pojo.vo.ResultMessage;
+
 
 /**
  * @Author Cien
@@ -58,19 +60,24 @@ public class ResultUtil<T> {
         return this.resultMessage;
 
     }
-    /**
-     * 返回成功消息
-     * 加工认证专用
-     * @param resultCode 返回码
-     * @return 返回成功消息
-     */
-    public ResultMessage<String> setSuccessMsg1(ResultCode resultCode) {
-        this.resultMessage1.setSuccess(true);
-        this.resultMessage1.setMessage(resultCode.message());
-        this.resultMessage1.setCode(resultCode.code());
-        this.resultMessage1.setResult("1");
-        return this.resultMessage1;
 
+    public ResultMessage<T> setMessage(Boolean flag, ResultCode resultCode, T t) {
+        this.resultMessage.setSuccess(flag);
+        this.resultMessage.setMessage(resultCode.message());
+        this.resultMessage.setCode(resultCode.code());
+        this.resultMessage.setResult(t);
+        return this.resultMessage;
+    }
+
+    /**
+     * 抽象静态方法，返回结果集
+     *
+     * @param t   范型
+     * @param <T> 范型
+     * @return 消息
+     */
+    public static <T> ResultMessage<T> resultMessage(Boolean flag, ResultCode resultCode, T t) {
+        return new ResultUtil<T>().setMessage(flag,resultCode,t);
     }
 
     /**
@@ -102,9 +109,7 @@ public class ResultUtil<T> {
     public static <T> ResultMessage<T> success() {
         return new ResultUtil<T>().setSuccessMsg(ResultCode.SUCCESS);
     }
-    public static <T> ResultMessage<String> success1() {
-        return new ResultUtil<String>().setSuccessMsg1(ResultCode.SUCCESS);
-    }
+
     /**
      * 返回失败
      *
@@ -152,5 +157,6 @@ public class ResultUtil<T> {
         this.resultMessage.setMessage(msg);
         return this.resultMessage;
     }
+
 
 }

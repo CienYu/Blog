@@ -1,30 +1,35 @@
 package com.longbai.entity;
-
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author Cien
- * @since 2023-02-20
- */
+import java.io.Serializable;
+import java.lang.String;
+import java.lang.Integer;
+
 @Data
-@EqualsAndHashCode(callSuper = false)
+@ApiModel(description = "TImg",value = "TImg")
 @TableName("t_img")
-public class TImg implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class TImg implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+	@ApiModelProperty(value = "图片id",required = false)
+	@TableId(value = "img_id", type = IdType.AUTO)
+	private Integer imgId;//图片id
 
-    private Integer imgId;
+	@ApiModelProperty(value = "图片url",required = false)
+    @TableField("img_url")
+	private String imgUrl;//图片url
 
-    private String imgUrl;
+	@ApiModelProperty(value = "图片上传者",required = false)
+    @TableField("img_user")
+	private String imgUser;//图片上传者
 
-    private String imgUser;
 
 
 }

@@ -1,28 +1,32 @@
 package com.longbai.entity;
-
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author Cien
- * @since 2023-02-20
- */
+import java.io.Serializable;
+import java.lang.String;
+import java.lang.Integer;
+
+
 @Data
-@EqualsAndHashCode(callSuper = false)
+@ApiModel(description = "TTag",value = "TTag")
 @TableName("t_tag")
-public class TTag implements Serializable {
+@EqualsAndHashCode(callSuper = false)
+public class TTag implements Serializable{
 
-    private static final long serialVersionUID = 1L;
+	@ApiModelProperty(value = "tagid",required = false)
+    @TableId(value = "tag_id" ,type = IdType.AUTO)
+	private Integer tagId;//tagid
 
-    private Integer tagId;
+	@ApiModelProperty(value = "tag名字",required = false)
+    @TableField("tag_name")
+	private String tagName;//tag名字
 
-    private String tagName;
 
 
 }

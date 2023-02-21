@@ -21,7 +21,7 @@ import javax.sql.DataSource;
  * @Note mp配置类
  */
 @Configuration
-@MapperScan(basePackages = "com.longbai.mapper.mysql", sqlSessionTemplateRef = "mysqlSqlSessionTemplate")
+@MapperScan(basePackages = "com.longbai.mapper", sqlSessionTemplateRef = "mysqlSqlSessionTemplate")
 public class MybatisDataSourceConfig {
     @Bean(name = "mysqlDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.mysql")
@@ -33,7 +33,7 @@ public class MybatisDataSourceConfig {
     public SqlSessionFactory postSqlSessionFactory(@Qualifier("mysqlDataSource") DataSource dataSource) throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:com/longbai/mapper/mysql/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:com/longbai/mapper/xml/*.xml"));
         return bean.getObject();
     }
 

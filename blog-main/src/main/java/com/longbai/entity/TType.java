@@ -1,4 +1,5 @@
 package com.longbai.entity;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -9,22 +10,26 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
-import java.lang.String;
-import java.lang.Integer;
 
+/**
+ * @Author Cien
+ * @Date 2023/2/22 14:52
+ * @Version 1.0
+ * @Note type实体类
+ */
 
 @Data
-@ApiModel(description = "TTag",value = "TTag")
-@TableName("t_tag")
+@ApiModel(description = "博文类型",value = "TType")
+@TableName("t_type")
 @EqualsAndHashCode(callSuper = false)
-public class TTag implements Serializable{
+public class TType implements Serializable {
 
-	@ApiModelProperty(value = "tagid",required = false)
-    @TableId(value = "tag_id" ,type = IdType.AUTO)
-	private Integer tagId;//tagid
+    @ApiModelProperty(value = "typeId",required = false)
+    @TableId(value = "type_id" ,type = IdType.AUTO)
+    private Integer typeId;
 
-	@ApiModelProperty(value = "tag名字",required = false)
+    @ApiModelProperty(value = "type名字",required = false)
     @TableField("tag_name")
-	private String tagName;//tag名字
+    private String typeName;
 
 }

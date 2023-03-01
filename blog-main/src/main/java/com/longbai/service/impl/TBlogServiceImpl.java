@@ -1,5 +1,6 @@
 package com.longbai.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.longbai.entity.TBlog;
 import com.longbai.mapper.db.TBlogMapper;
@@ -51,12 +52,15 @@ public class TBlogServiceImpl extends ServiceImpl<TBlogMapper, TBlog> implements
 
     @Override
     public TBlog findById(Integer id) {
-        return null;
+        LambdaQueryWrapper<TBlog> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        lambdaQueryWrapper.eq(TBlog::getBlogId, id);
+        return this.getOne(lambdaQueryWrapper);
     }
 
     @Override
     public List<TBlog> findAll() {
-        return null;
+        LambdaQueryWrapper<TBlog> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        return this.list(lambdaQueryWrapper);
     }
 
     @Override

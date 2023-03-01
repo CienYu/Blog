@@ -1,4 +1,4 @@
-package com.longbai.controller;
+package com.longbai.discard;
 
 import com.longbai.common.security.enums.ResultCode;
 import com.longbai.common.utils.ResultUtil;

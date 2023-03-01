@@ -1,4 +1,4 @@
-package com.longbai.controller;
+package com.longbai.discard;
 
 import com.longbai.common.security.enums.ResultCode;
 import com.longbai.common.utils.ResultUtil;
@@ -7,7 +7,6 @@ import com.longbai.pojo.vo.ResultMessage;
 import com.longbai.service.TBlogService;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

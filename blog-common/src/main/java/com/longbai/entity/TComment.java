@@ -44,6 +44,4 @@ public class TComment implements Serializable{
     @TableField("reply_id")
 	private Integer replyId;
 
-
-
 }

@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="blog-main" />
         <module name="blog-eureka" />
+        <module name="blog-common" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="blog-common" options="-parameters" />
       <module name="blog-eureka" options="-parameters" />
       <module name="blog-main" options="-parameters" />
     </option>

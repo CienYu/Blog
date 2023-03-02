@@ -1,9 +1,17 @@
 package com.longbai.controller;
 
-import io.swagger.annotations.Api;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.github.pagehelper.PageInfo;
+import com.longbai.common.mybatisPlus.QueryPageBean;
+import com.longbai.common.security.enums.ResultCode;
+import com.longbai.common.utils.ResultUtil;
+import com.longbai.entity.TBlog;
+import com.longbai.pojo.vo.BlogVO;
+import com.longbai.pojo.vo.ResultMessage;
+import com.longbai.service.TBlogService;
+import io.swagger.annotations.*;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * @Author Cien
@@ -16,5 +24,36 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/index")
 public class IndexController {
 
+    @Resource
+    private TBlogService tBlogService;
+
+    /***
+     * 分页+条件搜索TBlog表数据
+     * @param queryPageBean
+     * @param userId
+     * @return
+     */
+    @ApiOperation(value = "TBlog条件分页查询",notes = "分页条件查询TBlog方法详情",tags = {"TBlogController"})
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "path", name = "page", value = "当前页", required = true, dataType = "Integer"),
+            @ApiImplicitParam(paramType = "path", name = "size", value = "每页显示条数", required = true, dataType = "Integer")
+    })
+    @RequestMapping(value = "/findpage", method = RequestMethod.POST)
+    //@ApiParam(name = "TBlog对象",value = "传入JSON数据",required = false)
+    //切记RequestBody需要搭配post方法
+    public ResultMessage<PageInfo> findPage(@RequestBody QueryPageBean queryPageBean, Integer userId){
+        //调用TBlogService实现分页条件查询TBlog
+        System.err.println("::"+queryPageBean.getCurrentPage());
+        PageInfo<BlogVO> pageInfo = tBlogService.findPage(queryPageBean,userId);
+        return ResultUtil.resultMessage(true, ResultCode.SUCCESS, pageInfo);
+    }
+
+
+
+    @ResponseBody
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String test(){
+        return "hello world";
+    }
 
 }

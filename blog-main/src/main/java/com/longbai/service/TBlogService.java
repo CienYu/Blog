@@ -1,7 +1,10 @@
 package com.longbai.service;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.longbai.common.mybatisPlus.QueryPageBean;
 import com.longbai.entity.TBlog;
 import com.github.pagehelper.PageInfo;
+import com.longbai.pojo.vo.BlogVO;
+
 import java.util.List;
 
 public interface TBlogService extends IService<TBlog> {
@@ -17,11 +20,11 @@ public interface TBlogService extends IService<TBlog> {
 
     /***
      * 分页查询TBlog表数据
-     * @param page
-     * @param size
+     * @param queryPageBean
+     * @param userId
      * @return
      */
-    PageInfo<TBlog> findPage(int page, int size);
+    PageInfo<BlogVO> findPage(QueryPageBean queryPageBean, int userId);
 
     /***
      * 多条件搜索TBlog表数据

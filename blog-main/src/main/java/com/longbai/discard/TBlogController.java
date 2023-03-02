@@ -47,7 +47,7 @@ public class TBlogController {
      * @param size:每页显示多少条
      * @return
      */
-    @ApiOperation(value = "TBlog分页查询",notes = "分页查询TBlog方法详情",tags = {"TBlogController"})
+    /*@ApiOperation(value = "TBlog分页查询",notes = "分页查询TBlog方法详情",tags = {"TBlogController"})
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "path", name = "page", value = "当前页", required = true, dataType = "Integer"),
             @ApiImplicitParam(paramType = "path", name = "size", value = "每页显示条数", required = true, dataType = "Integer")
@@ -57,7 +57,7 @@ public class TBlogController {
         // 调用TBlogService实现分页查询TBlog
         PageInfo<TBlog> pageInfo = tBlogService.findPage(page, size);
         return ResultUtil.resultMessage(true,ResultCode.SUCCESS, pageInfo);
-    }
+    }*/
 
     /***
      * 多条件搜索TBlog表数据

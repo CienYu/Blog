@@ -7,6 +7,7 @@ import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.*;
@@ -18,7 +19,7 @@ import java.util.function.Consumer;
 @Component
 public class RedisCacheImpl implements Cache{
 
-    @Autowired
+    @Resource
     private RedisTemplate<Object, Object> redisTemplate;
 
     public RedisCacheImpl() {

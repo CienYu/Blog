@@ -79,14 +79,9 @@ public class AuthenticationFilter extends BasicAuthenticationFilter {
         log.error("请求url "+requestUrl);
         List<String> authUrls = Arrays.asList("/test");
         //如果不是超级管理员， 则鉴权
-        if (!authUser.getIsSuper()) {
-            if(authUser.getRole().getRole().equals(UserEnums.CONSIGNOR.getRole())){
-                if(PatternMatchUtils.simpleMatch(authUrls.toArray(new String[0]),requestUrl)){
-                }else{
-                    ResponseUtil.output(response, ResponseUtil.resultMap(false, 400, "权限不足"));
-                    throw new NoPermissionException("权限不足");
-                }
-            }
+        if (!authUser.getIsSuper() && authUser.getRole().getRole().equals(UserEnums.CONSIGNOR.getRole()) &&PatternMatchUtils.simpleMatch(authUrls.toArray(new String[0]),requestUrl)) {
+            ResponseUtil.output(response, ResponseUtil.resultMap(false, 400, "权限不足"));
+            throw new NoPermissionException("权限不足");
         }
     }
 

@@ -39,11 +39,9 @@ public class IndexController {
             @ApiImplicitParam(paramType = "path", name = "size", value = "每页显示条数", required = true, dataType = "Integer")
     })
     @RequestMapping(value = "/findpage", method = RequestMethod.POST)
-    //@ApiParam(name = "TBlog对象",value = "传入JSON数据",required = false)
     //切记RequestBody需要搭配post方法
-    public ResultMessage<PageInfo> findPage(@RequestBody QueryPageBean queryPageBean, Integer userId){
+    public ResultMessage<PageInfo> findPage(@RequestBody @ApiParam(name = "TBlog对象",value = "传入JSON数据") QueryPageBean queryPageBean, Integer userId){
         //调用TBlogService实现分页条件查询TBlog
-        System.err.println("::"+queryPageBean.getCurrentPage());
         PageInfo<BlogVO> pageInfo = tBlogService.findPage(queryPageBean,userId);
         return ResultUtil.resultMessage(true, ResultCode.SUCCESS, pageInfo);
     }

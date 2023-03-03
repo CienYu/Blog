@@ -1,7 +1,6 @@
 package com.longbai.common.security.token;
 
-
-
+import cn.hutool.jwt.JWT;
 import com.google.gson.Gson;
 import com.longbai.common.cache.Cache;
 import com.longbai.common.cache.CachePrefix;
@@ -15,7 +14,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
@@ -32,6 +33,9 @@ public class TokenUtil {
     private JWTTokenProperties tokenProperties;
     @Resource
     private Cache cache;
+
+    private static final String SING = "!@*(^*#sfdf&*$asdh$F&^";
+
 
 
 

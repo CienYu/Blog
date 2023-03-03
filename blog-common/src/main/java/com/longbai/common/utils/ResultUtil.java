@@ -61,8 +61,8 @@ public class ResultUtil<T> {
 
     }
 
-    public ResultMessage<T> setMessage(Boolean flag, ResultCode resultCode, T t) {
-        this.resultMessage.setSuccess(flag);
+    public ResultMessage<T> setMessage( ResultCode resultCode, T t) {
+        this.resultMessage.setSuccess(resultCode == ResultCode.SUCCESS ? true:false);
         this.resultMessage.setMessage(resultCode.message());
         this.resultMessage.setCode(resultCode.code());
         this.resultMessage.setResult(t);
@@ -77,7 +77,17 @@ public class ResultUtil<T> {
      * @return 消息
      */
     public static <T> ResultMessage<T> resultMessage(Boolean flag, ResultCode resultCode, T t) {
-        return new ResultUtil<T>().setMessage(flag,resultCode,t);
+        return new ResultUtil<T>().setMessage(resultCode,t);
+    }
+    /**
+     * 抽象静态方法，返回结果集
+     *
+     * @param t   范型
+     * @param <T> 范型
+     * @return 消息
+     */
+    public static <T> ResultMessage<T> resultMessage( ResultCode resultCode, T t) {
+        return new ResultUtil<T>().setMessage(resultCode,t);
     }
 
     /**

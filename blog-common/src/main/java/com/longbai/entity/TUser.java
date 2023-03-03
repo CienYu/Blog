@@ -60,6 +60,10 @@ public class TUser implements Serializable{
     @TableField("user_register_time")
 	private Date userRegisterTime;
 
+	@ApiModelProperty(value = "上次登录ip",required = false)
+	@TableField("last_ip")
+	private String lastIp;
+
 
 
 }

@@ -79,10 +79,12 @@ public class AuthenticationFilter extends BasicAuthenticationFilter {
         log.error("请求url "+requestUrl);
         List<String> authUrls = Arrays.asList("/test");
         //如果不是超级管理员， 则鉴权
-        if (!authUser.getIsSuper() && authUser.getRole().getRole().equals(UserEnums.CONSIGNOR.getRole()) &&PatternMatchUtils.simpleMatch(authUrls.toArray(new String[0]),requestUrl)) {
+        /*
+        if (!authUser.getIsSuper() && authUser.getRole().getRole().equals(UserEnums.ADMIN.getRole()) &&PatternMatchUtils.simpleMatch(authUrls.toArray(new String[0]),requestUrl)) {
             ResponseUtil.output(response, ResponseUtil.resultMap(false, 400, "权限不足"));
             throw new NoPermissionException("权限不足");
         }
+        */
     }
 
     /**
@@ -102,9 +104,8 @@ public class AuthenticationFilter extends BasicAuthenticationFilter {
             String json = claims.get(SecurityEnum.USER_CONTEXT.getValue()).toString();
             AuthUser authUser = JSONUtil.toBean(json, AuthUser.class);
             //校验redis中是否有权限
-            if (cache.hasKey(CachePrefix.ACCESS_TOKEN.getPrefix(UserEnums.CONSIGNOR) + jwt)||
-                    cache.hasKey(CachePrefix.ACCESS_TOKEN.getPrefix(UserEnums.PROCESSORS) + jwt)||
-                    cache.hasKey(CachePrefix.ACCESS_TOKEN.getPrefix(UserEnums.EMPLOYEE) + jwt)) {
+            if (cache.hasKey(CachePrefix.ACCESS_TOKEN.getPrefix(UserEnums.USER) + jwt)||
+                    cache.hasKey(CachePrefix.ACCESS_TOKEN.getPrefix(UserEnums.ADMIN) + jwt)) {
                 //用户角色
                 List<GrantedAuthority> auths = new ArrayList<>();
                 auths.add(new SimpleGrantedAuthority("ROLE_" + authUser.getRole()));

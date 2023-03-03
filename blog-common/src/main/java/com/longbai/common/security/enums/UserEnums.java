@@ -17,9 +17,9 @@ public enum UserEnums {
 
 
     //todo 待修改
-    CONSIGNOR("委托商"),
-    PROCESSORS("加工户"),
-    EMPLOYEE("普通员工");
+    VISITOR("访客"),
+    USER("普通用户"),
+    ADMIN("管理员");
 
     private final String role;
 
@@ -32,13 +32,13 @@ public enum UserEnums {
     }
 
     public static UserEnums getUserEnums(String role){
-        if(role.equals(UserEnums.CONSIGNOR.toString())){
-            return UserEnums.CONSIGNOR;
+        if(role.equals(UserEnums.ADMIN.toString())){
+            return UserEnums.ADMIN;
         }
-        if(role.equals(UserEnums.PROCESSORS.toString())){
-            return UserEnums.PROCESSORS;
+        if(role.equals(UserEnums.USER.toString())){
+            return UserEnums.USER;
         }
-        return UserEnums.EMPLOYEE;
+        return UserEnums.VISITOR;
     }
 
     public static Set<UserEnums> toList(JSONArray jsonArray){

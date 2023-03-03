@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "lili.jwt-setting")
+@ConfigurationProperties(prefix = "blog.jwt-setting")
 public class JWTTokenProperties {
     /**
      * token默认过期时间

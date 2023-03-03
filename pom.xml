@@ -36,6 +36,7 @@
         <jwt-version>0.11.5</jwt-version>
         <Hutool-version>5.8.11</Hutool-version>
         <spring-cloud-version>2021.0.5</spring-cloud-version>
+        <easy-captcha-version>1.6.2</easy-captcha-version>
     </properties>
 
     <dependencies>

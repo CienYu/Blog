@@ -61,4 +61,17 @@ public interface TUserService extends IService<TUser> {
      * @return
      */
     List<TUser> findAll();
+
+    /**
+     * 检验验证码
+     *
+     * @return boolean
+     */
+    boolean verifyCode(String verKey, String captcha);
+
+    /**
+     * 登录
+     */
+    TUser login(TUser tUser);
+
 }

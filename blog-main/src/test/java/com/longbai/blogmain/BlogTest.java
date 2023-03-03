@@ -8,6 +8,7 @@ import com.longbai.pojo.vo.BlogVO;
 import com.longbai.service.TBlogService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.annotation.Resource;
 
@@ -22,6 +23,10 @@ public class BlogTest {
     @Resource
     public TBlogService tBlogService;
 
+    @Resource
+    private PasswordEncoder encoder;
+
+
     @Test
     public void test(){
         QueryPageBean queryPageBean = new QueryPageBean();
@@ -30,5 +35,9 @@ public class BlogTest {
         //调用TBlogService实现分页条件查询TBlog
        // PageInfo<BlogVO> pageInfo = tBlogService.findPage(queryPageBean,1);
         //System.out.println(pageInfo);
+    }
+    @Test
+    public void passwordtest(){
+        System.out.println(encoder.encode("123456"));
     }
 }

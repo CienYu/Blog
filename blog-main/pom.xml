@@ -68,6 +68,12 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <!--        验证码生成-->
+        <dependency>
+            <groupId>com.github.whvcse</groupId>
+            <artifactId>easy-captcha</artifactId>
+            <version>${easy-captcha-version}</version>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>

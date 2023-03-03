@@ -11,11 +11,13 @@ public enum ResultCode {
      * 成功状态码
      */
     SUCCESS(200, "成功"),
+    TOKEN_SUCCESS(201,"token成功生成"),
 
     /**
      * 失败返回码
      */
     ERROR(400, "服务器繁忙，请稍后重试"),
+    TOKEN_ERROR(451,"TOKEN生成异常，请检查用户名密码是否匹配"),
 
     /**
      * 参数异常

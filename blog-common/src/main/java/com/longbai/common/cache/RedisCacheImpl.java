@@ -6,6 +6,7 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.support.atomic.RedisAtomicLong;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.nio.charset.StandardCharsets;
@@ -81,6 +82,20 @@ public class RedisCacheImpl implements Cache{
     public void remove(Object key) {
 
         redisTemplate.delete(key);
+    }
+    /**
+     * 删除缓存
+     *
+     * @param key 可以传一个值  或多个
+     */
+    public void del(String... key) {
+        if (key != null && key.length > 0) {
+            if (key.length == 1) {
+                redisTemplate.delete(key[0]);
+            } else {
+                redisTemplate.delete(CollectionUtils.arrayToList(key));
+            }
+        }
     }
 
     /**

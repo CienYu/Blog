@@ -1,10 +1,13 @@
 package com.longbai.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.longbai.common.cache.RedisCacheImpl;
 import com.longbai.common.exception.ServiceException;
+import com.longbai.common.security.enums.UserEnums;
 import com.longbai.entity.TUser;
 import com.longbai.mapper.db.TUserMapper;
 import com.longbai.service.TUserService;
@@ -19,7 +22,10 @@ import org.springframework.util.StringUtils;
 
 
 import javax.annotation.Resource;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
+import java.util.Random;
 
 import static com.longbai.common.cache.RedisConst.USER_CODE_KEY;
 
@@ -66,8 +72,53 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     }
 
     @Override
-    public void add(TUser tUser) {
-
+    public boolean add(TUser user) {
+        log.info("addUser.user.getUsername():[{}]", user.getUsername());
+        log.info("addUser.user.getPassword():[{}]", user.getPassword());
+        LambdaQueryWrapper<TUser> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+        //判断是否已经注册
+        lambdaQueryWrapper.eq(TUser::getUsername, user.getUsername());
+        if(this.getOne(lambdaQueryWrapper)!=null){
+            return false;
+        }
+        user.setRole(UserEnums.USER);
+        user.setPassword(encoder.encode(user.getPassword()));
+        // todo 待改
+        // user.setAvatar(isImagesTrue(user.getAvatar()));
+        this.save(user);
+        return true;
+    }
+    /**
+     * 用户提供的图片链接无效就自动生成图片
+     *
+     * @param postUrl 用户传来的头像url
+     * @return url
+     */
+    public String isImagesTrue(String postUrl) {
+        if (postUrl.contains("tcefrep.oss-cn-beijing.aliyuncs.com")) {   //本人的oss地址，就无需检验图片有效性
+            return postUrl;
+        }
+        int max = 1000;
+        int min = 1;
+        String picUrl = "https://unsplash.it/100/100?image=";
+        try {
+            URL url = new URL(postUrl);
+            HttpURLConnection urlCon = (HttpURLConnection) url.openConnection();
+            urlCon.setRequestMethod("POST");
+            urlCon.setRequestProperty("Content-type",
+                    "application/x-www-form-urlencoded");
+            if (urlCon.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                return postUrl;
+            } else {
+                Random random = new Random();
+                int s = random.nextInt(max) % (max - min + 1) + min;
+                return picUrl + s;
+            }
+        } catch (Exception e) {   // 代表图片链接无效
+            Random random = new Random();
+            int s = random.nextInt(max) % (max - min + 1) + min;
+            return picUrl + s;
+        }
     }
 
     @Override

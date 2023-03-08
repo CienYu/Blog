@@ -1,7 +1,9 @@
 package com.longbai.entity;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.longbai.common.security.enums.UserEnums;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -21,7 +23,7 @@ import java.lang.Integer;
 public class TUser implements Serializable{
 
 	@ApiModelProperty(value = "用户id",required = false)
-    @TableId("user_id")
+    @TableId(value = "user_id",type = IdType.AUTO)
 	private Integer userId;
 
 	@ApiModelProperty(value = "用户名",required = false)
@@ -50,7 +52,7 @@ public class TUser implements Serializable{
 
 	@ApiModelProperty(value = "用户权限",required = false)
     @TableField("role")
-	private String role;
+	private UserEnums role;
 
 	@ApiModelProperty(value = "最后登录时间",required = false)
     @TableField("last_login_time")

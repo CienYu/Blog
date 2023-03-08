@@ -47,7 +47,7 @@ public interface TUserService extends IService<TUser> {
      * 新增TUser表数据
      * @param tUser
      */
-    void add(TUser tUser);
+    boolean add(TUser tUser);
 
     /**
      * 根据ID查询TUser表数据

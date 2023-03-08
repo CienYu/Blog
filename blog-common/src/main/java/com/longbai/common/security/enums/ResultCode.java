@@ -31,6 +31,7 @@ public enum ResultCode {
     /**
      * 用户
      */
+    USER_ALREADY_EXIST(20000, "用户名已经被注册"),
     USER_EDIT_SUCCESS(20001, "用户修改成功"),
     USER_NOT_EXIST(20002, "用户不存在"),
     USER_NOT_LOGIN(20003, "用户未登录"),

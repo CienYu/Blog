@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 import static com.longbai.common.cache.RedisConst.*;
 
@@ -32,9 +31,9 @@ import static com.longbai.common.cache.RedisConst.*;
  */
 @Slf4j
 @RestController
-@Api(value = "LoginController")
-@RequestMapping("/login")
-public class LoginController {
+@Api(value = "UserController")
+@RequestMapping("/user")
+public class UserController {
     @Resource
     private RedisCacheImpl redisCache;
 
@@ -42,7 +41,7 @@ public class LoginController {
     private TUserService userService;
 
     @ApiOperation(value = "用户登录接口")
-    @RequestMapping(value = "/getlogin", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResultMessage login(@RequestBody UserVO userVO, HttpServletRequest request){
         TUser user = new TUser();
         BeanUtils.copyProperties(userVO, user);
@@ -64,7 +63,7 @@ public class LoginController {
             HashMap<String, Object> userInfo = new HashMap<>();
             userInfo.put("token", token);
             userInfo.put("user", userDB);
-            return ResultUtil.resultMessage(ResultCode.TOKEN_SUCCESS, userInfo);
+            return ResultUtil.resultMessage(ResultCode.SUCCESS, userInfo);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -85,4 +84,14 @@ public class LoginController {
         // 将key和base64返回给前端 .ok(MessageConstant.VERIFICATION_CODE_SUCCESS, code);
         return ResultUtil.resultMessage(true,ResultCode.SUCCESS,code);
     }
+
+    @ApiOperation(value = "注册")
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public ResultMessage register(@RequestBody TUser user)  {
+        if(userService.add(user)){
+            return ResultUtil.success(ResultCode.SUCCESS);
+        }
+        return ResultUtil.error(ResultCode.USER_ALREADY_EXIST);
+    }
+
 }

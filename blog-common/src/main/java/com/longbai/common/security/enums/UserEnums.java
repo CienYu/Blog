@@ -17,7 +17,7 @@ public enum UserEnums {
 
 
     //todo 待修改
-    VISITOR("访客"),
+    BAN("禁用"),
     USER("普通用户"),
     ADMIN("管理员");
 
@@ -38,7 +38,7 @@ public enum UserEnums {
         if(role.equals(UserEnums.USER.toString())){
             return UserEnums.USER;
         }
-        return UserEnums.VISITOR;
+        return UserEnums.BAN;
     }
 
     public static Set<UserEnums> toList(JSONArray jsonArray){
